@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
+use App\Models\JobListing;
 
 class Application extends Model
 {
@@ -12,8 +14,8 @@ class Application extends Model
         return $this->belongsTo(User::Class);
     }
 
-    public function job() {
-        return $this->belongsTo(Job::Class);
+    public function joblisting() {
+        return $this->belongsTo(JobListing::Class);
     }
 
 }
