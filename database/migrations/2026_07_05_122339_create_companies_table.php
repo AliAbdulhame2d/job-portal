@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('location');
             $table->string('phone');
             $table->string('email');
+            $table->text('description')->nullable();
             $table->string('website')->nullable();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();;
             $table->timestamps();
