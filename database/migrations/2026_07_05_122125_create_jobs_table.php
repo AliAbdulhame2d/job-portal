@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('jobs', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->text('description');
+            $table->decimal('salary', 10, 2);
+            $table->string('type');
+            $table->boolean('is_active')->default(true);
+            $table->foreignId('company_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }
