@@ -3,12 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Models\User;
 use App\Models\JobListing;
 
 class Company extends Model
 {
 
+    use HasFactory;
+    
     protected $fillable = ['name', 'location', 'phone', 'email', 'description', 'website', 'user_id'];
 
     public function user() {
