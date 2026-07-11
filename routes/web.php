@@ -3,11 +3,14 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\ApplicationController;
+use App\Http\Controllers\Admin\CompanyController;
+use App\Http\Controllers\Admin\JobListingController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\ApplicationController as FrontendApplicationController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::Class, 'index'])->name('home');
+Route::resource('applications', FrontendApplicationController::Class)->only(['store']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -19,9 +22,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware(['admin', 'auth'])->name('admin.')->prefix('admin')->group(function () {
+Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(function () {
 
 Route::get('/dashboard', [AdminController::Class, 'dashboard'])->name('dashboard');
+Route::resource('companies', CompanyController::Class);
+Route::resource('applications', ApplicationController::Class);
+Route::resource('joblistings', JobListingController::Class);
 
 });
 
