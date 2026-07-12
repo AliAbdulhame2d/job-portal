@@ -13,7 +13,7 @@ Route::get('/', [HomeController::Class, 'index'])->name('home');
 Route::resource('applications', FrontendApplicationController::Class)->only(['store']);
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('frontend.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
