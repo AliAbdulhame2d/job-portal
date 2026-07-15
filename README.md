@@ -59,7 +59,7 @@ Current features include:
 
 ![Admin Dashboard](screenshots/admin_dashboard.png)
 
----
+###
 
 ### Admin Dashboard (Mobile screen)
 
