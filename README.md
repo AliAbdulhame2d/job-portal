@@ -57,9 +57,13 @@ Current features include:
 
 ### Admin Dashboard
 
-![Admin Dashboard](screenshots/admin-dashboard.png)
+![Admin Dashboard](screenshots/admin_dashboard.png)
 
 ---
+
+### Admin Dashboard (Mobile screen)
+
+![Admin Dashboard](screenshots/admin_dashboard_mobile.png)
 
 ## Tech Stack
 
