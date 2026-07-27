@@ -17,7 +17,7 @@
 
 <body>
     <!--Main Container-->
-    <div class="h-screen flex flex-col bg-gray-100 overflow-hidden" x-data=" {open: false}" >
+    <div class="h-screen flex flex-col bg-gray-100 overflow-hidden" x-data=" {open: false}" @resize.window="if (window.innerWidth >= 768) open = false">
 
         <!--Header-->
         <header class="h-16 w-full flex items-center justify-between border-b border-b-gray-300">
@@ -38,8 +38,8 @@
         </header>
         <!--End Header-->
 
-        <!--Main Screen Container-->
-        <div class="flex flex-1 overflow-hidden">
+        
+        <main class="flex flex-1 overflow-hidden">
             <aside :class="open ? 'translate-x-0' : '-translate-x-full'" class="bg-gray-100 fixed top-17 left-0 h-full w-64 pt-10 p-4 border-r border-r-gray-300 overflow-y-auto transform transition-transform duration-300 md:translate-x-0 md:static">
                 <ul class="text-left">
                     <li class="hover:text-white mb-1 p-1 px-4 rounded-md {{request()->routeIs('admin.dashboard')? 'bg-sky-500 text-white' : 'hover:bg-sky-500'}}"><a href="{{route('admin.dashboard')}}">Home</a></li>
@@ -84,13 +84,14 @@
                     </li>
                 </ul>
             </aside>
-
-            <main class="flex-1 bg-white p-10 overflow-auto">
+            <!--Main Content-->
+            <section class="flex-1 bg-white p-8 overflow-auto">
+                <x-alert></x-alert>
                   {{$slot}}  
-            </main>
+            </sectin>
+            <!--End Main Content-->
+        </main>
         
-        </div>
-        <!--End Main Screen-->
 
     </div>
 </body>
