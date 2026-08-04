@@ -2,6 +2,10 @@
     <x-slot name="header">
         {{__('Company Page')}} 
      </x-slot>
+     
+     <x-admin.button-create>
+        <a href="{{route('admin.companies.create')}}">Add +</a>
+     </x-admin.button-create>
 
      <x-admin.table>
         <x-admin.table-thead>
