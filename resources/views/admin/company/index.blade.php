@@ -3,33 +3,52 @@
         {{__('Company Page')}} 
      </x-slot>
      
-     <x-admin.button-create>
-        <a href="{{route('admin.companies.create')}}">Add +</a>
-     </x-admin.button-create>
+     <x-admin.link :href="route('admin.companies.create')" variant="primary" class="mb-3">Add Company +</x-admin.link>
+     
+     <x-admin.table.table>
 
-     <x-admin.table>
-        <x-admin.table-thead>
-            <x-admin.table-th>Name</x-admin.table-th>
-            <x-admin.table-th>Adress</x-admin.table-th>
-            <x-admin.table-th>Telefone</x-admin.table-th>
-            <x-admin.table-th>Action</x-admin.table-th>
-        </x-admin.table-thead>
+        <x-admin.table.thead>
+            <x-admin.table.tr>
+                <x-admin.table.th>Company Name</x-admin.table.th>
+                <x-admin.table.th>Location</x-admin.table.th>
+                <x-admin.table.th>Phone</x-admin.table.th>
+                <x-admin.table.th>Email</x-admin.table.th>
+                <x-admin.table.th>Website</x-admin.table.th>
+                <x-admin.table.th>Owner</x-admin.table.th>
+                <x-admin.table.th>Description</x-admin.table.th>
+                <x-admin.table.th>Action</x-admin.table.th>   
+            </x-admin.table.tr>
+        </x-admin.table.thead>
+     
 
-        <x-admin.table-tbody>
-            <x-admin.table-tr>
-                <x-admin.table-td>Ali</x-admin.table-td>
-                <x-admin.table-td>Berlin</x-admin.table-td>
-                <x-admin.table-td>101010101</x-admin.table-td>
-                <x-admin.table-td></x-admin.table-td>
-            </x-admin.table-tr>
-            <x-admin.table-tr>
-                <x-admin.table-td>Ali</x-admin.table-td>
-                <x-admin.table-td>Berlin</x-admin.table-td>
-                <x-admin.table-td>101010101</x-admin.table-td>
-                <x-admin.table-td></x-admin.table-td>
-            </x-admin.table-tr>
-        </x-admin.table-tbody>
+        <x-admin.table.tbody>
+            @foreach ($companies as $company)
 
-     </x-admin.table>
+            <x-admin.table.tr>
+                <x-admin.table.td>{{$company->name}}</x-admin.table.td>
+                <x-admin.table.td>{{$company->location}}</x-admin.table.td>
+                <x-admin.table.td>{{$company->phone}}</x-admin.table.td>
+                <x-admin.table.td>{{$company->email}}</x-admin.table.td>
+                <x-admin.table.td>{{$company->website}}</x-admin.table.td>
+                <x-admin.table.td>{{$company->user->name}}</x-admin.table.td>
+                <x-admin.table.td>{{$company->description}}</x-admin.table.td>
+
+                <x-admin.table.td>
+                    <x-admin.link :href="route('admin.companies.edit',$company)" variant="warning" class="px-6">Edit</x-admin.link>
+             
+                    <form method="POST" action="{{route('admin.companies.destroy',$company)}}" class="inline-block mt-1">
+                        @csrf
+                        @method('DELETE')
+                        <x-admin.button variant="danger" type="submit">
+                            Delete
+                        </x-admin.button>
+                    </form>
+
+                </x-admin.table.td>
+
+            </x-admin.table.tr>
+            @endforeach
+        </x-admin.table.tbody>
+     </x-admin.table.table>
 
 </x-admin-layout>
