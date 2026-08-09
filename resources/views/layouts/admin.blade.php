@@ -42,17 +42,17 @@
         <main class="flex flex-1 overflow-hidden">
             <aside :class="open ? 'translate-x-0' : '-translate-x-full'" class="bg-gray-100 fixed top-17 left-0 h-full w-64 pt-10 p-4 border-r border-r-gray-300 overflow-y-auto transform transition-transform duration-300 md:translate-x-0 md:static">
                 <ul class="text-left">
-                    <li class="hover:text-white mb-1 p-1 px-4 rounded-md {{request()->routeIs('admin.dashboard')? 'bg-sky-500 text-white' : 'hover:bg-sky-500'}}"><a href="{{route('admin.dashboard')}}">Home</a></li>
-                    <li class="hover:text-white mb-1 p-1 px-4 rounded-md {{request()->routeIs('admin.jobListings.*')? 'bg-sky-500 text-white' : 'hover:bg-sky-500'}}"><a href="{{route('admin.joblistings.index')}}">JobListings</a></li>
-                    <li class="hover:text-white mb-1 p-1 px-4 rounded-md {{request()->routeIs('admin.companies.*')? 'bg-sky-500 text-white' : 'hover:bg-sky-500'}}"><a href="{{route('admin.companies.index')}}">Companies</a></li>
-                    <li class="hover:text-white mb-1 p-1 px-4 rounded-md {{request()->routeIs('admin.applications.*')? 'bg-sky-500 text-white' : 'hover:bg-sky-500'}}"><a href="{{route('admin.applications.index')}}">Applications</a></li>
+                    <li class="hover:text-white mb-1 p-1 px-4 rounded-md transition duration-200 {{request()->routeIs('admin.dashboard')? 'bg-gray-500 text-white' : 'hover:bg-sky-500'}}"><a href="{{route('admin.dashboard')}}">Home</a></li>
+                    <li class="hover:text-white mb-1 p-1 px-4 rounded-md transition duration-200 {{request()->routeIs('admin.jobListings.*')? 'bg-gray-500 text-white' : 'hover:bg-sky-500'}}"><a href="{{route('admin.joblistings.index')}}">JobListings</a></li>
+                    <li class="hover:text-white mb-1 p-1 px-4 rounded-md transition duration-200 {{request()->routeIs('admin.companies.*')? 'bg-gray-500 text-white' : 'hover:bg-sky-500'}}"><a href="{{route('admin.companies.index')}}">Companies</a></li>
+                    <li class="hover:text-white mb-1 p-1 px-4 rounded-md transition duration-200 {{request()->routeIs('admin.applications.*')? 'bg-gray-500 text-white' : 'hover:bg-sky-500'}}"><a href="{{route('admin.applications.index')}}">Applications</a></li>
                    
                     <!-- Settings Dropdown -->
-                    <li class="hover:bg-sky-300 mb-1 rounded-md">
+                    <li class="hover:bg-sky-500 mb-1 rounded-md">
                         
                             <x-dropdown align="right" width="48">
                                 <x-slot name="trigger">
-                                    <button class="p-1 px-4 inline-flex items-center border border-transparent  rounded-md text-gray-500 hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                                    <button class="p-1 px-4 inline-flex items-center border border-transparent  rounded-md text-gray-500 hover:text-white focus:outline-none transition ease-in-out duration-150">
                                         <div>{{ Auth::user()->name }}</div>
 
                                         <div class="ms-1">
@@ -86,9 +86,9 @@
             </aside>
             <!--Main Content-->
             <section class="flex-1 bg-white p-8 overflow-auto">
-                <x-alert></x-alert>
-                  {{$slot}}  
-            </sectin>
+                <x-alert> </x-alert>
+                {{$slot}} 
+            </section>
             <!--End Main Content-->
         </main>
         
